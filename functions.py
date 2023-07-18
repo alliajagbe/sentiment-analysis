@@ -1,6 +1,7 @@
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 from nltk.probability import FreqDist
+import string
 
 def header_df(df):
     df = df.iloc[2:]
@@ -18,7 +19,12 @@ def freq_analysis(df, col):
     tokens = word_tokenize(text)
     stop_words = set(stopwords.words('english'))
     tokens = [w for w in tokens if not w in stop_words]
-    freq_dist = FreqDist(tokens)
+
+    # removing punctuation
+    table = str.maketrans('', '', string.punctuation)
+    stripped = [w.translate(table) for w in tokens]
+    stripped = [w for w in stripped if w.isalpha()]
+    freq_dist = FreqDist(stripped)
     for word, frequency in freq_dist.most_common(10):
         print(u'{};{}'.format(word, frequency))
     return freq_dist
