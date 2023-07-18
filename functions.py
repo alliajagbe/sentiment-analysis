@@ -27,4 +27,4 @@ def frequency_analysis(df, col, most_common):
     freq_dist = FreqDist(stripped)
     for word, frequency in freq_dist.most_common(most_common):
         print(u'{};{}'.format(word, frequency))
-    return freq_dist
+    return stripped, freq_dist
