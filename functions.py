@@ -19,6 +19,6 @@ def freq_analysis(df, col):
     stop_words = set(stopwords.words('english'))
     tokens = [w for w in tokens if not w in stop_words]
     freq_dist = FreqDist(tokens)
-    for word, frequency in freq.most_common(10):
+    for word, frequency in freq_dist.most_common(10):
         print(u'{};{}'.format(word, frequency))
     return freq_dist
