@@ -13,7 +13,7 @@ def header_df(df):
     return df
 
 
-def freq_analysis(df, col):
+def freq_analysis(df, col, most_common):
     text = ''.join(df[col])
     text = text.lower()
     tokens = word_tokenize(text)
@@ -25,6 +25,6 @@ def freq_analysis(df, col):
     stripped = [w.translate(table) for w in tokens]
     stripped = [w for w in stripped if w.isalpha()]
     freq_dist = FreqDist(stripped)
-    for word, frequency in freq_dist.most_common(10):
+    for word, frequency in freq_dist.most_common(most_common):
         print(u'{};{}'.format(word, frequency))
     return freq_dist
