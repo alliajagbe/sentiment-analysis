@@ -1,4 +1,4 @@
-def restructure_df(df):
+def header_df(df):
     df = df.iloc[2:]
     new_header = df.iloc[0]
     df = df[1:]
