@@ -13,7 +13,7 @@ def header_df(df):
     return df
 
 
-def freq_analysis(df, col, most_common):
+def frequency_analysis(df, col, most_common):
     text = ''.join(df[col])
     text = text.lower()
     tokens = word_tokenize(text)
